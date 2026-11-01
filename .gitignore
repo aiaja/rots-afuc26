@@ -1,0 +1,29 @@
+# Xcode
+## User settings
+xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcuserdatad
+
+## Build products
+build/
+DerivedData/
+*.moved-aside
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+## CocoaPods (if ever used)
+Pods/
+
+## macOS system files
+.DS_Store
+*.swp
+*~
+
+## Claude Code local state
+.claude/
