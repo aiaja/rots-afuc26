@@ -49,6 +49,7 @@ extension NoteColor {
         case .peach: DSColor.notePeach
         case .mint: DSColor.noteMint
         case .lavender: DSColor.noteLavender
+        case .blue: DSColor.noteBlue
         }
     }
 
@@ -58,6 +59,7 @@ extension NoteColor {
         case .peach: Text("Peach", bundle: .module)
         case .mint: Text("Mint", bundle: .module)
         case .lavender: Text("Lavender", bundle: .module)
+        case .blue: Text("Blue", bundle: .module)
         }
     }
 }
