@@ -28,3 +28,4 @@ public protocol ThoughtRepository: AnyObject {
 
     func delete(id: UUID) throws
 }
+
