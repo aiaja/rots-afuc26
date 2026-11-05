@@ -25,7 +25,7 @@ public struct JournalRootView: View {
         NavigationStack(path: $viewModel.path) {
             HomeView(viewModel: viewModel)
                 .navigationDestination(for: UUID.self) { id in
-                    if let thought = viewModel.thought(id: id) {
+                    if viewModel.thought(id: id) != nil {
 //                        ThoughtDetailView(
 //                            thought: thought,
 //                            calendar: viewModel.grid.calendar,
@@ -35,10 +35,12 @@ public struct JournalRootView: View {
                     }
                 }
         }
+        
+        //Add notes navigation
         .sheet(item: $viewModel.editor) { editor in
-//            ThoughtEditorSheet(title: title(for: editor), draft: draft(for: editor)) { draft in
-//                viewModel.save(draft, from: editor)
-//            }
+            AddNotesView(title: title(for: editor), draft: draft(for: editor)) { draft in
+                viewModel.save(draft, from: editor)
+            }
         }
         .sheet(isPresented: $viewModel.isMonthPickerPresented) {
             MonthPickerSheet(viewModel: viewModel)

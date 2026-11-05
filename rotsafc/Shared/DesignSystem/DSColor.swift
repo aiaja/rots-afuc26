@@ -25,7 +25,8 @@ public enum DSColor {
     public static let notePeach = Color(hex: 0xFFC9A8)
     public static let noteMint = Color(hex: 0xB8F0D2)
     public static let noteLavender = Color(hex: 0xD9C8FA)
-
+    public static let noteBlue = Color(hex: 0xBFD9F5)
+    
     public static let moodDrained = Color(hex: 0x9B8BD6)
     public static let moodDown = Color(hex: 0x6FA8DC)
     public static let moodOkay = Color(hex: 0xE9A27C)
