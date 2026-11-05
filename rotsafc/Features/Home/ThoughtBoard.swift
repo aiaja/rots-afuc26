@@ -161,21 +161,19 @@ private struct NoteCard: View {
 /// A dashed spot on the line, inviting the user to hang a note there.
 private struct EmptyNoteSlot: View {
     let isToday: Bool
-
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: DSSpacing.xs) {
+        VStack(alignment: .center, spacing: DSSpacing.xs) {
             Image(systemName: "plus")
+                .resizable()
+                .scaledToFit()
                 .font(.headline)
-                .foregroundStyle(DSColor.brand)
+                .foregroundStyle(.gray)
+                .frame(width: 20, height: 20)
                 .accessibilityHidden(true)
-            title
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.leading)
         }
         .padding(14)
-        .padding(.top, DSSpacing.xxs)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .background {
             RoundedRectangle(cornerRadius: DSRadius.note, style: .continuous)
                 .fill(DSColor.noteYellow.opacity(0.3))
@@ -193,11 +191,4 @@ private struct EmptyNoteSlot: View {
         .rotationEffect(.degrees(-1))
         .dynamicTypeSize(...DynamicTypeSize.xLarge)
     }
-
-    private var title: Text {
-        isToday
-            ? Text("Hang your first thought for today", bundle: .module)
-            : Text("Add a thought to this day", bundle: .module)
-    }
 }
-
