@@ -30,10 +30,9 @@ struct AddNotesView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: DSSpacing.sm) {
-                        MoodPicker(selection: $draft.mood)
-                        StickyNoteEditor(text: $draft.text, color: draft.color.swatch, mood: draft.mood, focus: $isEditing)
-                        NoteColorPicker(selection: $draft.color)
-                    }
+                    MoodPicker(selection: $draft.mood)
+                    StickyNoteEditor(text: $draft.text, color: draft.color.swatch, mood: draft.mood, focus: $isEditing)
+                }
                     .padding(.horizontal, DSSpacing.md)
                     .padding(.top, DSSpacing.xs)
             }
@@ -62,7 +61,6 @@ struct AddNotesView: View {
         .presentationDragIndicator(.visible)
         .task { isEditing = true }
         .sensoryFeedback(.selection, trigger: draft.mood)
-        .sensoryFeedback(.selection, trigger: draft.color)
     }
 
     @ToolbarContentBuilder

@@ -1,14 +1,15 @@
 import SwiftUI
 
 struct StickyNoteEditor: View {
-    private static let height: CGFloat = 224
+    private static let compactHeight: CGFloat = 224
+    private static let expandedHeight: CGFloat = 320
     private static let stampClearance = MoodStamp.size + DSSpacing.xs
     
     @Binding var text: String
     let color: Color
     let mood: Mood
     var focus: FocusState<Bool>.Binding
-
+    
     var body: some View {
         TextEditor(text: $text)
             .focused(focus)
@@ -17,7 +18,9 @@ struct StickyNoteEditor: View {
             .foregroundStyle(.black)
             .padding(.bottom, Self.stampClearance)
             .padding(DSSpacing.sm)
-            .frame(height: Self.height)
+            .frame(height: focus.wrappedValue ? Self.compactHeight : Self.expandedHeight)
+            .animation(.spring(duration: 0.4),
+                       value: focus.wrappedValue)
             .stickyNote(color)
             .overlay(alignment: .topLeading) { placeholder }
             .overlay(alignment: .bottomTrailing) {
@@ -31,7 +34,7 @@ struct StickyNoteEditor: View {
             .padding(.top, DSSpacing.xs)
             .accessibilityLabel(Text("Thought note", bundle: .module))
     }
-
+    
     @ViewBuilder
     private var placeholder: some View {
         if text.isEmpty {
