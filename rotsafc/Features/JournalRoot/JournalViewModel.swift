@@ -31,7 +31,7 @@ final class JournalViewModel {
         }
     }
 
-    static let notesPerPage = 4
+    static let notesPerPage = 6
     static let browsableWeeks = 104
 
     private(set) var selectedDay: ThoughtDay
