@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// The main screen: the day's notes, with the chick below them.
+/// The main screen: the day's notes, with the chick peeking from behind the thought board.
 struct HomeView: View {
     private static let momentDuration: Duration = .seconds(5)
 
@@ -17,10 +17,23 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 0) {
             header
                 .padding(.bottom, 20)
-            ThoughtBoard(viewModel: viewModel) { thought in
-                viewModel.path.append(thought.id)
+            
+            // ZStack untuk mengatur posisi board dan bebek yang mengintip beserta pesannya
+            ZStack(alignment: .topTrailing) {
+                // 1. Gabungan bebek dan SpeechBubble di belakang board
+                chickArea
+                    .offset(x: -20, y: -24)
+                    .zIndex(0)
+                
+                // 2. ThoughtBoard diturunkan sedikit ke bawah
+                ThoughtBoard(viewModel: viewModel) { thought in
+                    viewModel.path.append(thought.id)
+                }
+                .padding(.top, 45)
+                .zIndex(1)
             }
-            chickArea
+            
+            Spacer(minLength: 16)
             Button {
                 viewModel.editor = .new
             } label: {
@@ -104,33 +117,26 @@ struct HomeView: View {
     }
 
     private var chickArea: some View {
-        Button {
-            viewModel.tapChick()
-        } label: {
-            HStack(spacing: 24) {
-                ChuckView(state: viewModel.chuckState)
-                    .frame(maxWidth: 124, maxHeight: 124)
-                if let chickMessage {
-                    SpeechBubble(chickMessage, tailEdge: .leading)
-                        .transition(.scale(scale: 0.8, anchor: .leading).combined(with: .opacity))
+            Button {
+                viewModel.tapChick()
+            } label: {
+                HStack(spacing: 12) {
+                    // Bebek ditaruh di sebelah kiri
+                    ChuckView(state: viewModel.chuckState)
+                        .frame(width: 115, height: 115)
+                    
+                    // Balon pesan ditaruh di sebelah kanan bebek dengan ekor menghadap ke kiri (menunjuk ke bebek)
+//                    if let chickMessage {
+//                        SpeechBubble(chickMessage, tailEdge: .leading)
+//                    }
                 }
+                .contentShape(.rect)
             }
-            .frame(
-                maxWidth: .infinity,
-                maxHeight: .infinity,
-                alignment: chickMessage == nil ? .bottom : .bottomLeading
-            )
-            .padding(.leading, chickMessage == nil ? 0 : DSSpacing.sm)
-            .padding(.top, DSSpacing.sm)
-            .padding(.bottom, 36)
-            .contentShape(.rect)
+            .buttonStyle(.plain)
+            .animation(.spring(duration: 0.45), value: viewModel.chuckState)
+            .animation(.spring(duration: 0.45), value: viewModel.invitesFirstThought)
+            .accessibilityLabel(chickMessage ?? Text(verbatim: "RotsAfuc4"))
         }
-        .buttonStyle(.plain)
-        .animation(.spring(duration: 0.45), value: viewModel.chuckState)
-        .animation(.spring(duration: 0.45), value: viewModel.invitesFirstThought)
-        .accessibilityLabel(chickMessage ?? Text(verbatim: "RotsAfuc4"))
-    }
-
     private var chickMessage: Text? {
         switch viewModel.chuckState {
         case .idle:

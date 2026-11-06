@@ -13,8 +13,8 @@ struct ThoughtBoard: View {
     let onOpen: (Thought) -> Void
 
     private static let rowSpacing: CGFloat = 24
-    private static let noteHeight: CGFloat = 120
-    private static let trackHeight: CGFloat = 284
+    private static let noteHeight: CGFloat = 110 // Sedikit disesuaikan agar 3 baris muat dengan pas
+    private static let trackHeight: CGFloat = 410 // Diperbesar dari 284 ke 410 untuk 3 baris
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -48,7 +48,9 @@ struct ThoughtBoard: View {
 
     private var track: some View {
         ZStack(alignment: .top) {
-            VStack(spacing: Self.noteHeight + Self.rowSpacing - 10) {
+            // Ditambah 3 baris Clothesline
+            VStack(spacing: Self.noteHeight + Self.rowSpacing) {
+                Clothesline()
                 Clothesline()
                 Clothesline()
             }
