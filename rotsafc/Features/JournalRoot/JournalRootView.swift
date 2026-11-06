@@ -25,13 +25,12 @@ public struct JournalRootView: View {
         NavigationStack(path: $viewModel.path) {
             HomeView(viewModel: viewModel)
                 .navigationDestination(for: UUID.self) { id in
-                    if viewModel.thought(id: id) != nil {
-//                        ThoughtDetailView(
-//                            thought: thought,
-//                            calendar: viewModel.grid.calendar,
-//                            onEdit: { viewModel.editor = .edit(thought) },
-//                            onDelete: { viewModel.delete(thought) }
-//                        )
+                    if let thought = viewModel.thought(id: id) {
+                        ThoughtDetailView(
+                            thought: thought,
+                            onEdit: { viewModel.editor = .edit(thought) },
+                            onDelete: { viewModel.delete(thought) }
+                        )
                     }
                 }
         }
