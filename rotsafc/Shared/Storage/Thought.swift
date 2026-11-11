@@ -2,11 +2,16 @@ import Foundation
 
 /// How the user felt when writing a thought.
 public enum Mood: String, CaseIterable, Identifiable, Sendable {
-    case drained
-    case down
-    case okay
-    case good
-    case amazing
+//    case drained
+//    case down
+//    case okay
+//    case good
+//    case amazing
+    case joy
+    case sadness
+    case angry
+    case disgust
+    case fear
     
     public var id: String { rawValue }
 }
@@ -25,11 +30,16 @@ public enum NoteColor: String, CaseIterable, Identifiable, Sendable {
 extension Mood{
     public var noteColor: NoteColor {
         switch self {
-        case .drained: .lavender
-        case .down: .blue
-        case .okay: .peach
-        case .good: .mint
-        case .amazing: .yellow
+//        case .drained: .lavender
+//        case .down: .blue
+//        case .okay: .peach
+//        case .good: .mint
+//        case .amazing: .yellow
+        case .fear: .lavender
+        case .sadness: .blue
+        case .disgust: .mint
+        case .angry: .peach
+        case .joy: .yellow
         }
     }
 }
@@ -68,7 +78,7 @@ public struct ThoughtDraft: Hashable, Sendable {
     public var color: NoteColor { mood.noteColor }
     
     
-    public init(text: String = "", mood: Mood = .good) {
+    public init(text: String = "", mood: Mood = .joy) {
         self.text = text
         self.mood = mood
     }

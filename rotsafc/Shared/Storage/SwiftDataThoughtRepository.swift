@@ -90,7 +90,7 @@ extension ThoughtRecord {
         Thought(
             id: id,
             text: text,
-            mood: Mood(rawValue: moodRaw) ?? .okay,
+            mood: Mood(rawValue: moodRaw) ?? .joy,
             color: NoteColor(rawValue: colorRaw) ?? .yellow,
             day: ThoughtDay(key: dayKey),
             createdAt: createdAt
