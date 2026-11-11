@@ -86,7 +86,7 @@ struct ThoughtDetailView: View {
             thought: Thought(
                 id: UUID(),
                 text: "Deadline minggu depan menumpuk, tapi hari ini aku mau tenang dulu.",
-                mood: .good,
+                mood: .joy,
                 color: .mint,
                 day: ThoughtDay(date: .now),
                 createdAt: .now

@@ -37,7 +37,7 @@ struct HomeView: View {
             Button {
                 viewModel.editor = .new
             } label: {
-                Text("Add a thought", bundle: .module)
+                Text("Share your thought", bundle: .module)
             }
             .buttonStyle(.dsPrimary)
         }

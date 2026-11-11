@@ -9,21 +9,33 @@ import SwiftUI
 extension Mood {
     var title: Text {
         switch self {
-        case .drained: Text("Drained", bundle: .module)
-        case .down: Text("Down", bundle: .module)
-        case .okay: Text("Okay", bundle: .module)
-        case .good: Text("Good", bundle: .module)
-        case .amazing: Text("Amazing", bundle: .module)
+//        case .drained: Text("Drained", bundle: .module)
+//        case .down: Text("Down", bundle: .module)
+//        case .okay: Text("Okay", bundle: .module)
+//        case .good: Text("Good", bundle: .module)
+//        case .amazing: Text("Amazing", bundle: .module)
+            
+        case .sadness: Text("Sadness", bundle: .module)
+        case .fear: Text("Fear", bundle: .module)
+        case .angry: Text("Angry", bundle: .module)
+        case .disgust: Text("Disgust", bundle: .module)
+        case .joy: Text("Joy", bundle: .module)
         }
     }
 
     var chickRemark: Text {
         switch self {
-        case .drained: Text("You felt drained this day.", bundle: .module)
-        case .down: Text("You felt down this day.", bundle: .module)
-        case .okay: Text("You felt okay this day.", bundle: .module)
-        case .good: Text("You felt good this day.", bundle: .module)
-        case .amazing: Text("You felt amazing this day.", bundle: .module)
+//        case .drained: Text("You felt drained this day.", bundle: .module)
+//        case .down: Text("You felt down this day.", bundle: .module)
+//        case .okay: Text("You felt okay this day.", bundle: .module)
+//        case .good: Text("You felt good this day.", bundle: .module)
+//        case .amazing: Text("You felt amazing this day.", bundle: .module)
+            
+        case .sadness: Text("Its okay to be sad, tomorrow will be better.", bundle: .module)
+        case .fear: Text("I'm here, youre not alone.", bundle: .module)
+        case .angry: Text("Calm down, I'm here.", bundle: .module)
+        case .disgust: Text("It so disgusting, ewhh.", bundle: .module)
+        case .joy: Text("You looks so happy today!.", bundle: .module)
         }
     }
 
@@ -33,11 +45,17 @@ extension Mood {
 
     var color: Color {
         switch self {
-        case .drained: DSColor.moodDrained
-        case .down: DSColor.moodDown
-        case .okay: DSColor.moodOkay
-        case .good: DSColor.moodGood
-        case .amazing: DSColor.moodAmazing
+//        case .drained: DSColor.moodDrained
+//        case .down: DSColor.moodDown
+//        case .okay: DSColor.moodOkay
+//        case .good: DSColor.moodGood
+//        case .amazing: DSColor.moodAmazing
+            
+        case .sadness: DSColor.moodSadness
+        case .fear: DSColor.moodFear
+        case .angry: DSColor.moodAngry
+        case .disgust: DSColor.moodDisgust
+        case .joy: DSColor.moodJoy
         }
     }
 }

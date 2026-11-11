@@ -27,11 +27,17 @@ public enum DSColor {
     public static let noteLavender = Color(hex: 0xD9C8FA)
     public static let noteBlue = Color(hex: 0xBFD9F5)
     
-    public static let moodDrained = Color(hex: 0x9B8BD6)
-    public static let moodDown = Color(hex: 0x6FA8DC)
-    public static let moodOkay = Color(hex: 0xE9A27C)
-    public static let moodGood = Color(hex: 0x5FBF96)
-    public static let moodAmazing = Color(hex: 0xE8B93A)
+//    public static let moodDrained = Color(hex: 0x9B8BD6)
+//    public static let moodDown = Color(hex: 0x6FA8DC)
+//    public static let moodOkay = Color(hex: 0xE9A27C)
+//    public static let moodGood = Color(hex: 0x5FBF96)
+//    public static let moodAmazing = Color(hex: 0xE8B93A)
+    
+    public static let moodSadness = Color(hex: 0x9B8BD6)
+    public static let moodFear = Color(hex: 0x6FA8DC)
+    public static let moodAngry = Color(hex: 0xE9A27C)
+    public static let moodDisgust = Color(hex: 0x5FBF96)
+    public static let moodJoy = Color(hex: 0xE8B93A)
 }
 
 extension Color {
